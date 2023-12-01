@@ -8,10 +8,17 @@ import uvicorn
 app = FastAPI()
 
 
-@app.get("/")
+@app.get("/heath-check")
 def health_check():
     """Returns Hello world"""
     return "hello world"
+
+app.get("/")
+def homePage():
+    """
+        Returns the Home Page.
+    """
+    return "Home page"
 
 
 if __name__ == "__main__":
