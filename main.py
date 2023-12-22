@@ -4,7 +4,7 @@
 
 from fastapi import FastAPI
 import uvicorn
-# import pyobdc
+import pyobdc
 
 app = FastAPI()
 
