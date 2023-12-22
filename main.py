@@ -9,10 +9,10 @@ import pyobdc
 app = FastAPI()
 
 # Set your database connection parameters
-server = 'your_server_name'
-database = 'your_database_name'
-username = 'your_username'
-password = 'your_password'
+server = 'new-server321.postgres.database.azure.com'
+database = 'new'
+username = 'azureuser'
+password = 'spr12345spr_A'
 
 
 
@@ -20,7 +20,7 @@ def connect_to_db():
 
     # Construct the connection string
     connection_string = f'DRIVER={{ODBC Driver 17 for SQL Server}};SERVER={server};DATABASE={database};UID={username};PWD={password}'
-
+    status = False
     # Try to establish a connection
     try:
         # Establish the database connection
@@ -35,17 +35,17 @@ def connect_to_db():
 
         # Display the result
         print("Connected to SQL Server. Server version:", row[0])
-
+        status = True
     except pyodbc.Error as e:
         # Handle any connection errors
         print("Error connecting to SQL Server:", e)
-
+        status = False
     finally:
         # Close the connection, whether successful or not
         if connection:
             connection.close()
             print("Connection closed.")
-
+    return status
 
 @app.get("/heath-check")
 def health_check():
@@ -57,7 +57,7 @@ def homePage():
     """
         Returns the Home Page.
     """
-    return "Home page"
+    return connect_to_db()
 
 
 if __name__ == "__main__":
