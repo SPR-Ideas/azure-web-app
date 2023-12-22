@@ -57,7 +57,7 @@ def homePage():
     """
         Returns the Home Page.
     """
-    return connect_to_db()
+    return "helloworld "
 
 
 if __name__ == "__main__":
