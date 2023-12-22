@@ -52,7 +52,7 @@ def health_check():
     """Returns Hello world"""
     return "hello world"
 
-app.get("/")
+@app.get("/")
 def homePage():
     """
         Returns the Home Page.
